@@ -80,6 +80,27 @@ $(function() {
     });
 
 
+    describe('New Feed Selection', function() {
+      const feed = document.querySelector('.feed');
+      const firstFeed = [];
+
+      beforeEach(function(done) {
+        loadFeed(0);
+        Array.from(feed.children).forEach(function(entry) {
+          firstFeed.push(entry.innerText);
+        });
+        loadFeed(1, done);
+      });
+
+      it('content changes', function() {
+        Array.from(feed.children).forEach(function(entry, index) {
+          expect(firstFeed[index] === entry.innerText).not.toBe(true);
+        });
+      });
+
+    });
+
+
     /* TODO: Write a new test suite named "New Feed Selection" */
 
         /* TODO: Write a test that ensures when a new feed is loaded
