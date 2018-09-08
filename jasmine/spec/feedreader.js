@@ -52,6 +52,17 @@ $(function() {
         expect(body.classList.contains('menu-hidden')).toBe(true);
       });
 
+      it('menu toggles', function() {
+        const body = document.querySelector('body');
+        const menu = document.querySelector('.menu-icon-link');
+
+        menu.click();
+        expect(body.classList.contains('menu-hidden')).toBe(false);
+
+        menu.click();
+        expect(body.classList.contains('menu-hidden')).toBe(true);
+      });
+
     });
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
