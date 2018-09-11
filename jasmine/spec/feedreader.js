@@ -114,7 +114,8 @@ $(function() {
 
       const feed = document.querySelector('.feed');
       //stores first instance of loadFeed function to an array
-      const firstFeed = [];
+      const prevUrl = [];
+      const newUrl = [];
 
 
       /* TODO: Write a test that ensures when a new feed is loaded
@@ -122,18 +123,26 @@ $(function() {
       * Remember, loadFeed() is asynchronous.
       */
       beforeEach(function(done) {
-        loadFeed(0);
-        Array.from(feed.children).forEach(function(entry) {
-          firstFeed.push(entry.innerText);
+        loadFeed(0, function() {
+
+          Array.from(feed.children).forEach(function(entry) {
+            prevUrl.push(entry.innerText);
+          });
+
+          loadFeed(1, function() {
+            Array.from(feed.children).forEach(function(entry) {
+              newUrl.push(entry.innerText);
+              done();
+            });
+          });
         });
-        loadFeed(1, done);
       });
 
+
       it('content changes', function() {
-        Array.from(feed.children).forEach(function(entry, index) {
-          expect(firstFeed[index] === entry.innerText).not.toBe(true);
-        });
+          expect(newUrl).not.toBe(prevUrl);
       });
+
 
     });
 
