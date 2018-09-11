@@ -102,8 +102,8 @@ $(function() {
       });
 
       it('is element', function() {
-        const feed = document.querySelector('.feed');
-        expect(feed.children.length).not.toBe(0);
+        const feed = document.querySelector('.entry');
+        expect(feed.firstElementChild.length).not.toBe(0);
       });
 
     });
