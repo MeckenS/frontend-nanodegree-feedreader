@@ -77,14 +77,14 @@ $(function() {
     describe('Initial Entries', function() {
 
 
-      //After loadFeed() has executed we check to make sure .entry's firstElementChild's length is not 0
+      //After loadFeed() has executed we check to make sure .entry's length is not 0
       beforeEach(function(done) {
         loadFeed(0, done);
       });
 
       it('is element', function() {
-        const feed = document.querySelector('.entry');
-        expect(feed.firstElementChild.length).not.toBe(0);
+        const feed = $('.feed .entry');
+        expect(feed.length).not.toBe(0);
       });
 
     });
